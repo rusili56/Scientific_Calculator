@@ -3,6 +3,7 @@ package nyc.c4q.rusili.scientific_calculator;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.HorizontalScrollView;
@@ -33,14 +34,16 @@ public class Calculator_Vertical extends AppCompatActivity {
     }
 
     public void addValue(int input) {
-        sDisplay = sDisplay2 += input;
+        sDisplay = Integer.toString(input);
         tvMain.setText(sDisplay);
+        sDisplay2 += input;
         tvHistory.setText(sDisplay2);
     }
 
     public void addValue(char input) {
-        sDisplay = sDisplay2 += input;
+        sDisplay = Integer.toString(input);
         tvMain.setText(sDisplay);
+        sDisplay2 += input;
         tvHistory.setText(sDisplay2);
     }
 
@@ -84,6 +87,7 @@ public class Calculator_Vertical extends AppCompatActivity {
                 break;
             case "=":
                 sNumber2 = sDisplay;
+                Log.d("sDisplay", sDisplay);
                 if (op.equals("/")) {
                     sAnswer = Double.toString(Double.parseDouble(sNumber1) / Double.parseDouble(sNumber2));
                 } else if (op.equals("*")) {

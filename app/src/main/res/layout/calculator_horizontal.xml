@@ -319,6 +319,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="25"
                         android:background="#767676"
+                        android:text="DEL"
                         android:textColor="#dcdcdc"
                         android:textSize="15sp"
                         />
