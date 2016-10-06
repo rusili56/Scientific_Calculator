@@ -3,62 +3,13 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <HorizontalScrollView
-        android:id="@+id/headerscroll"
-        android:layout_width="match_parent"
-        android:layout_height="50dp">
-
-        <TextView
-            android:id="@+id/headerdisplay"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingTop="15dp"
-            android:hint="012345"
-            android:textColorHint="#c9c9c9"
-            android:layout_gravity="right"
-            android:textSize="30sp"
-            android:textColor="#bbbbbb"
-            android:textAlignment="viewEnd"
-            android:paddingRight="10dp"
-            android:paddingLeft="10dp"
-            android:scrollHorizontally="true"
-            android:singleLine="true"
-            />
-    </HorizontalScrollView>
-
-    <LinearLayout
-        android:id="@+id/displaymain"
-        android:layout_below="@id/headerscroll"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:orientation="horizontal">
-            <TextView
-                android:id="@+id/displaynumbers"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="85"
-                android:hint="012345"
-                android:textColorHighlight="#c9c9c9"
-                android:textColorHint="#dcdcdc"
-                android:textColor="#505050"
-                android:textAlignment="textEnd"
-                android:gravity="center_vertical"
-                android:textSize="75sp"
-                android:paddingRight="10dp"
-                android:paddingLeft="10dp"
-                android:lines="1"
-                />
-    </LinearLayout>
-
     <LinearLayout
         android:id="@+id/buttonlayout"
         android:layout_below="@+id/displaymain"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        >
+        android:layout_alignParentStart="true">
 
         <LinearLayout
             android:id="@+id/leftcolumn"
@@ -291,4 +242,58 @@
         android:layout_weight="8"
         android:onClick="onClickUtil"/>
     </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/displaymain"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:orientation="horizontal"
+        android:layout_below="@+id/headerscroll"
+        android:layout_alignParentStart="true">
+
+        <TextView
+            android:id="@+id/displaynumbers"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="85"
+            android:background="#f7f7f7"
+            android:hint="012345"
+            android:textColorHighlight="#c9c9c9"
+            android:textColorHint="#dcdcdc"
+            android:textColor="#505050"
+            android:textAlignment="textEnd"
+            android:gravity="center_vertical"
+            android:textSize="70sp"
+            android:paddingRight="10dp"
+            android:paddingLeft="10dp"
+            android:lines="1"
+            />
+    </LinearLayout>
+
+    <HorizontalScrollView
+        android:id="@+id/headerscroll"
+        android:layout_width="match_parent"
+        android:background="#f7f7f7"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
+
+        <TextView
+            android:id="@+id/headerdisplay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="15dp"
+            android:background="#f7f7f7"
+            android:hint="012345"
+            android:textColorHint="#c9c9c9"
+            android:layout_gravity="right"
+            android:textSize="30sp"
+            android:textColor="#bbbbbb"
+            android:textAlignment="viewEnd"
+            android:paddingRight="10dp"
+            android:paddingLeft="10dp"
+            android:scrollHorizontally="true"
+            android:singleLine="true"
+            />
+    </HorizontalScrollView>
 </RelativeLayout>
