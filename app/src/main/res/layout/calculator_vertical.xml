@@ -9,7 +9,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:paddingTop="5dp"
+        android:background="#76B3FF"
+        >
 
         <LinearLayout
             android:id="@+id/leftcolumn"
@@ -163,7 +166,7 @@
                 android:layout_height="0dp"
                 android:background="#505050"
                 android:text="="
-                android:textColor="#dcdcdc"
+                android:textColor="#76B3FF"
                 android:textSize="40sp"
                 android:layout_weight="25"
                 android:onClick="onClickUtil"
@@ -238,7 +241,7 @@
         android:id="@+id/buttonclear"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:background="#4CEACD"
+        android:background="#76B3FF"
         android:layout_weight="8"
         android:onClick="onClickUtil"/>
     </LinearLayout>
@@ -276,7 +279,8 @@
         android:background="#f7f7f7"
         android:layout_height="50dp"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        >
 
         <TextView
             android:id="@+id/headerdisplay"

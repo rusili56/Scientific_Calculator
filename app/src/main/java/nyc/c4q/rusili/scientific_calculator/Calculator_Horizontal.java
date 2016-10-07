@@ -31,7 +31,7 @@ public class Calculator_Horizontal extends AppCompatActivity {
             tvDeg.setTextColor(Color.parseColor("#f7f7f7"));
             tvDeg.setBackgroundColor(Color.parseColor("#767676"));
             tvRad.setText(":::::");
-            tvRad.setTextColor(Color.parseColor("#767676"));
+            tvRad.setTextColor(Color.parseColor("#505050"));
             tvRad.setBackgroundColor(Color.parseColor("#f7f7f7"));
             isDeg = false;
         } else {
@@ -39,7 +39,7 @@ public class Calculator_Horizontal extends AppCompatActivity {
             tvRad.setTextColor(Color.parseColor("#f7f7f7"));
             tvRad.setBackgroundColor(Color.parseColor("#767676"));
             tvDeg.setText(":::::");
-            tvDeg.setTextColor(Color.parseColor("#767676"));
+            tvDeg.setTextColor(Color.parseColor("#505050"));
             tvDeg.setBackgroundColor(Color.parseColor("#f7f7f7"));
             isDeg = true;
         }

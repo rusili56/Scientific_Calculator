@@ -8,7 +8,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Calculator_Vertical">
+        <activity android:name=".Calculator_Horizontal">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

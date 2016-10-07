@@ -18,6 +18,7 @@
             android:gravity="center_vertical"
             android:textSize="15sp"
             android:hint="History 1234567890"
+            android:textColorHint="#dcdcdc"
             />
     </LinearLayout>
 
@@ -37,6 +38,7 @@
             android:background="#f7f7f7"
             android:textSize="40sp"
             android:hint="Main 12345567890"
+            android:textColorHint="#dcdcdc"
             />
 
     </LinearLayout>
@@ -47,6 +49,8 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="70"
+        android:paddingTop="5dp"
+        android:background="#76B3FF"
         >
 
         <LinearLayout
@@ -60,7 +64,9 @@
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="20">
+                android:layout_weight="20"
+
+                >
 
                 <LinearLayout
                     android:orientation="horizontal"
@@ -81,8 +87,9 @@
                         android:background="#f7f7f7"
                         android:textAlignment="center"
                         android:gravity="center_vertical"
-                        android:textColor="#dcdcdc"
+                        android:textColor="#505050"
                         android:textSize="15sp"
+                        android:text=":::::"
                         />
 
                     <TextView
@@ -340,6 +347,7 @@
                         android:textColor="#dcdcdc"
                         android:textSize="15sp"
                         />
+
                     <Button
                         android:id="@+id/b5"
                         android:layout_width="0dp"
@@ -521,7 +529,7 @@
 
                 <Button
                     android:id="@+id/idCE"
-                    android:background="#4CEACD"
+                    android:background="#76B3FF"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                 />
