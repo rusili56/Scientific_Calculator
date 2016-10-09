@@ -1,10 +1,13 @@
 package nyc.c4q.rusili.scientific_calculator;
 
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.HorizontalScrollView;
+
 import android.widget.TextView;
 
 /**
@@ -16,6 +19,7 @@ public class Calculator_Horizontal extends AppCompatActivity {
     TextView tvDeg;
     TextView tvRad;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +28,7 @@ public class Calculator_Horizontal extends AppCompatActivity {
         tvRad = (TextView) findViewById(R.id.idRad);
 
     }
+
 
     public void onSwitch(View view) {
         if (isDeg){

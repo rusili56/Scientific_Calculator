@@ -60,9 +60,9 @@ public class Calculator_Vertical extends AppCompatActivity {
         setContentView(R.layout.calculator_vertical);
 
         scroll = (HorizontalScrollView) findViewById(R.id.headerscroll);
-        tvHistory = (TextView) findViewById(R.id.headerdisplay);
-        tvMain = (TextView) findViewById(R.id.displaynumbers);
-    }
+    tvHistory = (TextView) findViewById(R.id.headerdisplay);
+    tvMain = (TextView) findViewById(R.id.displaynumbers);
+}
 
     public void onClickNum(View v) {
         Button b = (Button)v;
