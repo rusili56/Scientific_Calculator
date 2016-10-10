@@ -17,7 +17,7 @@ import java.util.List;
  */
 
 public class KeyPad extends AppCompatActivity{
-
+    TextView idHistory;
     /*Key Pad special functions*/
 
     public Button ANS;
@@ -52,7 +52,7 @@ public class KeyPad extends AppCompatActivity{
     public String pushStringVal;
     public String storeStringVal = "";
 
-    TextView idHistory = (TextView) findViewById(R.id.idHistory);
+
 
     private List<ButtonValues>  List_ButtonValues = Arrays.asList(
             ButtonValues.num0,   //1
@@ -87,6 +87,8 @@ public class KeyPad extends AppCompatActivity{
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.calculator_horizontal);
+
+        idHistory = (TextView) findViewById(R.id.idHistory);
 
         num0 = (Button) findViewById(R.id.btn_0);
         num1 = (Button) findViewById(R.id.btn_1);
@@ -174,12 +176,12 @@ public class KeyPad extends AppCompatActivity{
         return new View.OnClickListener(){
                     @Override
                     public void onClick(View v) {
-                        TextView idHistory = (TextView) findViewById(R.id.idHistory);
+
                         switch(ButtValue){
                             case num0:
                                 pushStringVal = storeStringVal +"0";
                                 storeStringVal = pushStringVal;
-                                idHistory.setText(pushStringVal);
+
                                 break;
                             case num1:
                                 pushStringVal = storeStringVal + "1";
@@ -243,13 +245,10 @@ public class KeyPad extends AppCompatActivity{
                                 break;
                             case RightParenthesis:
                                 break;
-
-
                             case dot:
                                 break;
-
-
                 }
+                        idHistory.setText(pushStringVal);
 
             }
         };
