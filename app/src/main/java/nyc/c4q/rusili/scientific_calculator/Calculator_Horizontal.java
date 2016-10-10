@@ -1,17 +1,19 @@
 package nyc.c4q.rusili.scientific_calculator;
 
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.HorizontalScrollView;
+
 import android.widget.TextView;
 
 /**
  * Created by rusili on 10/5/16.
  */
 
-public class Calculator_Horizontal extends AppCompatActivity {
+public class Calculator_Horizontal extends KeyPad{
     boolean isDeg = true;
     TextView tvDeg;
     TextView tvRad;
@@ -22,7 +24,15 @@ public class Calculator_Horizontal extends AppCompatActivity {
         setContentView(R.layout.calculator_horizontal);
         tvDeg = (TextView) findViewById(R.id.idDeg);
         tvRad = (TextView) findViewById(R.id.idRad);
+        launchKeyPad(this);
 
+    }
+
+
+
+    private void launchKeyPad(Context context){
+        Intent intent = new Intent(context, KeyPad.class);
+        context.startActivity(intent);
     }
 
     public void onSwitch(View view) {
