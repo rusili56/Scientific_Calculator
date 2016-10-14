@@ -2,6 +2,7 @@ package nyc.c4q.rusili.scientific_calculator;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -37,6 +38,8 @@ public class MainActivity extends AppCompatActivity {
         sNumber1 = sNumber2 = sAnswer = sDisplay = sDisplay2 = "";
         tvMain.setText(sDisplay);
         tvHistory.setText(sDisplay2);
+        this.cantClickOP();
+        this.canClickEquals();
     }
 
     public void clear() {
@@ -45,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void addValue(int input) {
-        sDisplay = Integer.toString(input);
+        sDisplay += Integer.toString(input);
         tvMain.setText(sDisplay);
         sDisplay2 += input;
         tvHistory.setText(sDisplay2);
@@ -68,6 +71,8 @@ public class MainActivity extends AppCompatActivity {
         Button b = (Button)v;
         int i = Integer.parseInt(b.getText().toString());
         addValue(i);
+        this.canClickOP();
+        this.canClickEquals();
     }
 
     public void onClickUtil(View v) {
@@ -112,6 +117,7 @@ public class MainActivity extends AppCompatActivity {
                 tvHistory.setText(sDisplay2);
 
                 scroll.fullScroll(HorizontalScrollView.FOCUS_RIGHT);
+                this.canClickOP();
                 break;
         }
     }
@@ -145,7 +151,71 @@ public class MainActivity extends AppCompatActivity {
                 sDisplay2 += " / ";
                 break;
         }
+        this.cantClickOP();
+        this.cantClickEquals();;
         tvHistory.setText(sDisplay2);
+    }
+
+    public void cantClickOP(){
+        Button temp = (Button) findViewById(R.id.buttonplus);
+        temp.setClickable(false);
+        temp.setFocusable(false);
+        temp.setEnabled(false);
+        temp.setTextColor(Color.parseColor("#767676"));
+        temp = (Button) findViewById(R.id.buttonminus);
+        temp.setClickable(false);
+        temp.setFocusable(false);
+        temp.setEnabled(false);
+        temp.setTextColor(Color.parseColor("#767676"));
+        temp = (Button) findViewById(R.id.buttonmultiply);
+        temp.setClickable(false);
+        temp.setFocusable(false);
+        temp.setEnabled(false);
+        temp.setTextColor(Color.parseColor("#767676"));
+        temp = (Button) findViewById(R.id.buttondivide);
+        temp.setClickable(false);
+        temp.setFocusable(false);
+        temp.setEnabled(false);
+        temp.setTextColor(Color.parseColor("#767676"));
+    }
+
+    public void canClickOP(){
+        Button temp = (Button) findViewById(R.id.buttonplus);
+        temp.setClickable(true);
+        temp.setFocusable(true);
+        temp.setEnabled(true);
+        temp.setTextColor(Color.parseColor("#dcdcdc"));
+        temp = (Button) findViewById(R.id.buttonminus);
+        temp.setClickable(true);
+        temp.setFocusable(true);
+        temp.setEnabled(true);
+        temp.setTextColor(Color.parseColor("#dcdcdc"));
+        temp = (Button) findViewById(R.id.buttonmultiply);
+        temp.setClickable(true);
+        temp.setFocusable(true);
+        temp.setEnabled(true);
+        temp.setTextColor(Color.parseColor("#dcdcdc"));
+        temp = (Button) findViewById(R.id.buttondivide);
+        temp.setClickable(true);
+        temp.setFocusable(true);
+        temp.setEnabled(true);
+        temp.setTextColor(Color.parseColor("#dcdcdc"));
+    }
+
+    public void cantClickEquals(){
+        Button temp = (Button) findViewById(R.id.buttonequals);
+        temp.setClickable(false);
+        temp.setFocusable(false);
+        temp.setEnabled(false);
+        temp.setTextColor(Color.parseColor("#767676"));
+    }
+
+    public void canClickEquals(){
+        Button temp = (Button) findViewById(R.id.buttonequals);
+        temp.setClickable(true);
+        temp.setFocusable(true);
+        temp.setEnabled(true);
+        temp.setTextColor(Color.parseColor("#76B3FF"));
     }
 
     private void launchKeyPad(Context context){
