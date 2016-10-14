@@ -25,6 +25,26 @@
 
 
     <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="20"
+        >
+
+        <TextView
+            android:id="@+id/tv_Main"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textAlignment="center"
+            android:gravity="center_vertical"
+            android:background="#f7f7f7"
+            android:textSize="40sp"
+            android:hint="Main 12345567890"
+            android:textColorHint="#dcdcdc"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
         android:id="@+id/idLayoutButtons"
         android:orientation="horizontal"
         android:layout_width="match_parent"
@@ -520,26 +540,6 @@
 
         </LinearLayout>
 
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="20"
-        >
-
-        <TextView
-            android:id="@+id/tv_Main"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:textAlignment="center"
-            android:gravity="center_vertical"
-            android:background="#f7f7f7"
-            android:textSize="40sp"
-            android:hint="Main 12345567890"
-            android:textColorHint="#dcdcdc"
-            />
 
     </LinearLayout>
 

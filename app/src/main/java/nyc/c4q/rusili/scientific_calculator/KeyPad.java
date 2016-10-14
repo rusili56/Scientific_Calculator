@@ -86,7 +86,7 @@ public class KeyPad extends AppCompatActivity{
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.calculator_horizontal);
+        setContentView(R.layout.calculator);
 
         idHistory = (TextView) findViewById(R.id.idHistory);
 

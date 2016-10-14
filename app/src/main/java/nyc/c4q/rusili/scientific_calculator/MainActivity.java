@@ -1,5 +1,6 @@
 package nyc.c4q.rusili.scientific_calculator;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -9,9 +10,7 @@ import android.widget.Button;
 import android.widget.HorizontalScrollView;
 import android.widget.TextView;
 
-import static android.R.attr.screenOrientation;
-
-public class Calculator_Vertical extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity {
 
     private boolean lastequals = false;
     private String op = "";
@@ -21,6 +20,18 @@ public class Calculator_Vertical extends AppCompatActivity {
     private TextView tvMain, tvHistory;
     private HorizontalScrollView scroll;
 
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+//        launchKeyPad(this);
+        setContentView(R.layout.calculator);
+        scroll = (HorizontalScrollView) findViewById(R.id.headerscroll);
+        tvHistory = (TextView) findViewById(R.id.headerdisplay);
+        tvMain = (TextView) findViewById(R.id.displaynumbers);
+//        super.onSaveInstanceState(savedInstanceState);
+}
     public void ce() {
         lastequals = false;
         sNumber1 = sNumber2 = sAnswer = sDisplay = sDisplay2 = "";
@@ -53,17 +64,6 @@ public class Calculator_Vertical extends AppCompatActivity {
         tvMain.setText(sDisplay);
         tvHistory.setText(sDisplay2);
     }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.calculator_vertical);
-
-        scroll = (HorizontalScrollView) findViewById(R.id.headerscroll);
-    tvHistory = (TextView) findViewById(R.id.headerdisplay);
-    tvMain = (TextView) findViewById(R.id.displaynumbers);
-}
-
     public void onClickNum(View v) {
         Button b = (Button)v;
         int i = Integer.parseInt(b.getText().toString());
@@ -147,5 +147,42 @@ public class Calculator_Vertical extends AppCompatActivity {
         }
         tvHistory.setText(sDisplay2);
     }
+
+    private void launchKeyPad(Context context){
+        Intent intent = new Intent(context, KeyPad.class);
+        context.startActivity(intent);
+    }
+
+
+
 }
+
+
+
+//<--This code was taken from a deleted instance state -->
+
+//    tvDeg = (TextView) findViewById(R.id.idDeg);
+//    tvRad = (TextView) findViewById(R.id.idRad);
+//    public void onSwitch(View view) {
+//        if (isDeg){
+//            tvDeg.setText("DEG");
+//            tvDeg.setTextColor(Color.parseColor("#f7f7f7"));
+//            tvDeg.setBackgroundColor(Color.parseColor("#767676"));
+//            tvRad.setText(":::::");
+//            tvRad.setTextColor(Color.parseColor("#505050"));
+//            tvRad.setBackgroundColor(Color.parseColor("#f7f7f7"));
+//            isDeg = false;
+//        } else {
+//            tvRad.setText("RAD");
+//            tvRad.setTextColor(Color.parseColor("#f7f7f7"));
+//            tvRad.setBackgroundColor(Color.parseColor("#767676"));
+//            tvDeg.setText(":::::");
+//            tvDeg.setTextColor(Color.parseColor("#505050"));
+//            tvDeg.setBackgroundColor(Color.parseColor("#f7f7f7"));
+//            isDeg = true;
+//        }
+//
+//
+//    }
+
 
