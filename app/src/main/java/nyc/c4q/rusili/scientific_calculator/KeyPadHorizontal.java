@@ -16,7 +16,7 @@ import java.util.List;
  * Created by RafatK *AKA* BlackJack on 10/7/16.
  */
 
-public class KeyPad extends AppCompatActivity{
+public class KeyPadHorizontal extends AppCompatActivity{
     TextView idHistory;
     /*Key Pad special functions*/
 
