@@ -87,7 +87,6 @@ public class KeyPadHorizontal extends AppCompatActivity{
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.calculator);
-
         idHistory = (TextView) findViewById(R.id.idHistory);
 
         num0 = (Button) findViewById(R.id.btn_0);

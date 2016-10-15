@@ -14,6 +14,7 @@ import android.widget.TextView;
  */
 
 public class KeyPadVertical extends AppCompatActivity {
+
     private boolean lastequals = false;
     private String op = "";
     private String sNumber1, sNumber2, sAnswer;
