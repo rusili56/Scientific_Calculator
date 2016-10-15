@@ -29,13 +29,12 @@ public class KeyPadVertical extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         int Orientation = getResources().getConfiguration().orientation;
 
-        switch(Orientation){
-            case  Configuration.ORIENTATION_LANDSCAPE:
-                Log.d(TAG,"Orientation is LANDSCAPE" );
-                setContentView(R.layout.calculator);
-                MainActivity.LaunchHorizontalKeypad(this);
-                break;
-            case Configuration.ORIENTATION_PORTRAIT:
+        if(Orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            Log.d(TAG, "Orientation is LANDSCAPE");
+            setContentView(R.layout.calculator);
+            MainActivity.LaunchHorizontalKeypad(this);
+
+        }else{
                 Log.d(TAG, "Orientation is Portrait");
                 setContentView(R.layout.calculator);
                 setContentView(R.layout.calculator);
@@ -43,12 +42,6 @@ public class KeyPadVertical extends AppCompatActivity {
                 scroll = (HorizontalScrollView) findViewById(R.id.headerscroll);
                 tvHistory = (TextView) findViewById(R.id.headerdisplay);
                 tvMain = (TextView) findViewById(R.id.displaynumbers);
-                break;
-            default:
-                Log.d(TAG, "Orientation skipped to default");
-                finish();
-                break;
-         
         }
 
     }

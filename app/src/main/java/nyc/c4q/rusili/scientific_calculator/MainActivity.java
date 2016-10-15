@@ -42,24 +42,26 @@ public class MainActivity extends AppCompatActivity {
             }
     }
 
-    @Override
-    public void onConfigurationChanged(Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
+    // ----------------------- TESTED THIS METHOD TO PREVENT CRASHING (FAILED - R.K) --------------------------
 
-        // Checks the orientation of the screen
-        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            Toast.makeText(this, "landscape", Toast.LENGTH_SHORT).show();
-            Log.d(TAG,"Orientation is LANDSCAPE" );
-            finish();
-            LaunchHorizontalKeypad(this);
-
-        } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT){
-            Toast.makeText(this, "portrait", Toast.LENGTH_SHORT).show();
-            Log.d(TAG,"Orientation is PORTRAIT" );
-            finish();
-            LaunchVerticalKeypad(this);
-        }
-    }
+//    @Override
+//    public void onConfigurationChanged(Configuration newConfig) {
+//        super.onConfigurationChanged(newConfig);
+//
+//        // Checks the orientation of the screen
+//        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+//            Toast.makeText(this, "landscape", Toast.LENGTH_SHORT).show();
+//            Log.d(TAG,"Orientation is LANDSCAPE" );
+//            finish();
+//            LaunchHorizontalKeypad(this);
+//
+//        } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT){
+//            Toast.makeText(this, "portrait", Toast.LENGTH_SHORT).show();
+//            Log.d(TAG,"Orientation is PORTRAIT" );
+//            finish();
+//            LaunchVerticalKeypad(this);
+//        }
+//    }
     @Override
         public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
                 super.onSaveInstanceState(outState, outPersistentState);
