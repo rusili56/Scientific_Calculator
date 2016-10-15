@@ -1,7 +1,6 @@
 package nyc.c4q.rusili.scientific_calculator;
 
-import android.content.Context;
-import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -10,6 +9,8 @@ import android.widget.Button;
 import android.widget.HorizontalScrollView;
 import android.widget.TextView;
 
+import org.mariuszgromada.math.mxparser.Expression;
+
 public class MainActivity extends AppCompatActivity {
 
     private boolean lastequals = false;
@@ -17,8 +18,14 @@ public class MainActivity extends AppCompatActivity {
     private String sNumber1, sNumber2, sAnswer;
     private String sDisplay = "";
     private String sDisplay2 = "";
-    private TextView tvMain, tvHistory;
+    private TextView tvMain, tvHistory, tvMainLand,tvHistoryLand;
     private HorizontalScrollView scroll;
+    private String landDisplay = "";
+    private String landHistory = "";
+
+
+
+
 
 
 
@@ -30,8 +37,47 @@ public class MainActivity extends AppCompatActivity {
         scroll = (HorizontalScrollView) findViewById(R.id.headerscroll);
         tvHistory = (TextView) findViewById(R.id.headerdisplay);
         tvMain = (TextView) findViewById(R.id.displaynumbers);
+        tvMainLand = (TextView) findViewById(R.id.tv_MainLand);
+        tvHistoryLand = (TextView) findViewById(R.id.idHistoryLand);
 //        super.onSaveInstanceState(savedInstanceState);
 }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            outState.putString("CALC_MAIN_SCREEN", tvMain.getText().toString());
+            outState.putString("CALC_HISTORY_SCREEN", tvHistory.getText().toString());
+        }
+        if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
+            outState.putString("CALC_MAIN_SCREEN", tvMainLand.getText().toString());
+            outState.putString("CALC_HISTORY_SCREEN", tvHistoryLand.getText().toString());
+        }
+
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT){
+            String displayLand = savedInstanceState.getString("CALC_MAIN_SCREEN");
+            String historyLand = savedInstanceState.getString("CALC_HISTORY_SCREEN");
+            tvMain.setText(displayLand);
+            tvHistory.setText(historyLand);
+        }
+
+        if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE){
+            String displayLand = savedInstanceState.getString("CALC_MAIN_SCREEN");
+            String historyLand = savedInstanceState.getString("CALC_HISTORY_SCREEN");
+            tvMainLand.setText(displayLand);
+            tvHistoryLand.setText(historyLand);
+            landDisplay = (String) tvMainLand.getText();
+
+        }
+
+
+    }
+
     public void ce() {
         lastequals = false;
         sNumber1 = sNumber2 = sAnswer = sDisplay = sDisplay2 = "";
@@ -148,10 +194,184 @@ public class MainActivity extends AppCompatActivity {
         tvHistory.setText(sDisplay2);
     }
 
-    private void launchKeyPad(Context context){
-        Intent intent = new Intent(context, KeyPad.class);
-        context.startActivity(intent);
+//    private void launchKeyPad(Context context){
+//        Intent intent = new Intent(context, KeyPad.class);
+//        context.startActivity(intent);
+//    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//-------------------------------- Landscape Functions ---------------------------------
+    boolean finishedExpression = false;
+
+
+    public void setCalculator(){
+        tvMainLand.setText(landDisplay);
+        tvHistoryLand.setText(landDisplay);
     }
+
+
+    public void onClickNumLand(View v){    // xml on click function for adding numbers, parens, and simple operators to display
+        Button b = (Button) v;
+        String i = (String)b.getText();
+        if(finishedExpression){
+            landDisplay = i;
+            landHistory = i;
+            setCalculator();
+            finishedExpression = false;
+        }
+        else {
+            landDisplay += i;
+            landHistory += i;
+            setCalculator();
+        }
+    }
+
+    public void onClickOpLand(View v){    // xml on click function for adding numbers, parens, and simple operators to display
+        Button b = (Button) v;
+        String i = (String)b.getText();
+        landDisplay += i;
+        landHistory += i;
+        setCalculator();
+        finishedExpression = false;
+    }
+
+    public void onClickEqualsPress(View v){ // xml on click function that evaluates the string in the main textview using mxparser
+        String input = (String) tvMainLand.getText();
+        Expression e = new Expression(input);
+        String answer = Double.toString(e.calculate());
+        tvMainLand.setText(answer);
+        landDisplay = answer;
+        finishedExpression = true;
+    }
+
+    public void onClickDelPress(View v){
+        landDisplay = "";
+        landHistory = "";
+        setCalculator();
+    }
+
+    public void onClickSinTanCos(View v){
+        Button b = (Button) v;
+        String operation = b.getText().toString() + '(';
+        landDisplay += operation;
+        landHistory += operation;
+        setCalculator();
+    }
+
+    public void onExponentClick(View v){
+        landDisplay += "^";
+        landHistory += "^";
+        setCalculator();
+        finishedExpression = false;
+    }
+
+    public void onSqrtClick(View v){
+        landDisplay += "sqrt(";
+        landHistory += "sqrt(";
+        setCalculator();
+    }
+
+    public void onExponentialClick(View v){
+        landDisplay += "!";
+        landHistory += "!";
+        setCalculator();
+        finishedExpression = false;
+    }
+
+    public void onClickPiLand(View v){    // xml on click function for adding numbers, parens, and simple operators to display
+        String i = "pi";
+        if(finishedExpression){
+            landDisplay = i;
+            landHistory = i;
+            setCalculator();
+            finishedExpression = false;
+        }
+        else {
+            landDisplay += i;
+            landHistory += i;
+            setCalculator();
+        }
+    }
+
+
+    public void onClickELand(View v){    // xml on click function for adding numbers, parens, and simple operators to display
+        String i = "e";
+        if(finishedExpression){
+            landDisplay = i;
+            landHistory = i;
+            setCalculator();
+            finishedExpression = false;
+        }
+        else {
+            landDisplay += i;
+            landHistory += i;
+            setCalculator();
+        }
+    }
+
+    public void onLnClick(View v){
+        landDisplay += "ln(";
+        landHistory += "ln(";
+        setCalculator();
+    }
+
+    public void onLogClick(View v){
+        landDisplay += "log(";
+        landHistory += "log(";
+        setCalculator();
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
