@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.widget.Toast;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -39,48 +40,62 @@ public class MainActivity extends AppCompatActivity {
                             finish();
                             break;
             }
+    }
 
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
 
+        // Checks the orientation of the screen
+        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            Toast.makeText(this, "landscape", Toast.LENGTH_SHORT).show();
+            Log.d(TAG,"Orientation is LANDSCAPE" );
+            finish();
+            LaunchHorizontalKeypad(this);
 
-
-
+        } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT){
+            Toast.makeText(this, "portrait", Toast.LENGTH_SHORT).show();
+            Log.d(TAG,"Orientation is PORTRAIT" );
+            finish();
+            LaunchVerticalKeypad(this);
+        }
     }
     @Override
         public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
                 super.onSaveInstanceState(outState, outPersistentState);
         }
 
-        @Override
-        protected void onDestroy() {
-                super.onDestroy();
-                int Orientation = getResources().getConfiguration().orientation;
-                switch(Orientation){
-                        case  Configuration.ORIENTATION_LANDSCAPE:
-                                Log.d(TAG,"Orientation Destroyed on LANDSCAPE");
-                                StopHorizontalKeypad(this);
-                                LaunchVerticalKeypad(this);
-                                break;
-                        case Configuration.ORIENTATION_PORTRAIT:
-                                Log.d(TAG,"Orientation Destroyed on PORTRAIT");
-                                StopVerticalKeypad(this);
-                                LaunchHorizontalKeypad(this);
-                                break;
-                        case Configuration.ORIENTATION_UNDEFINED:
-                                Log.d(TAG,"Orientation Destroyed UNDEFINED");
-                                break;
-                        default:
-                                Log.d(TAG,"Orientation Destroyed on Default");
-                                break;
-                }
+//        @Override
+//        protected void onDestroy() {
+//                super.onDestroy();
+//                int Orientation = getResources().getConfiguration().orientation;
+//                switch(Orientation){
+//                        case  Configuration.ORIENTATION_LANDSCAPE:
+//                                Log.d(TAG,"Orientation Destroyed on LANDSCAPE");
+//                                StopHorizontalKeypad(this);
+//                                LaunchVerticalKeypad(this);
+//                                break;
+//                        case Configuration.ORIENTATION_PORTRAIT:
+//                                Log.d(TAG,"Orientation Destroyed on PORTRAIT");
+//                                StopVerticalKeypad(this);
+//                                LaunchHorizontalKeypad(this);
+//                                break;
+//                        case Configuration.ORIENTATION_UNDEFINED:
+//                                Log.d(TAG,"Orientation Destroyed UNDEFINED");
+//                                break;
+//                        default:
+//                                Log.d(TAG,"Orientation Destroyed on Default");
+//                                break;
+//                }
+//
+//        }
 
-        }
-
-        private void LaunchHorizontalKeypad(Context context){
+        public static void LaunchHorizontalKeypad(Context context){
                 Intent intent = new Intent(context, KeyPadHorizontal.class);
                 context.startActivity(intent);
         }
 
-        private void LaunchVerticalKeypad(Context context){
+        public static void LaunchVerticalKeypad(Context context){
                 Intent intent = new Intent(context, KeyPadVertical.class);
                 context.startActivity(intent);
         }

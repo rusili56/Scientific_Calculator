@@ -1,8 +1,10 @@
 package nyc.c4q.rusili.scientific_calculator;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -17,6 +19,7 @@ import java.util.List;
  */
 
 public class KeyPadHorizontal extends AppCompatActivity{
+    private static final String TAG = "MainActivity";
     TextView idHistory;
     /*Key Pad special functions*/
 
@@ -84,77 +87,94 @@ public class KeyPadHorizontal extends AppCompatActivity{
 
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.calculator);
-        idHistory = (TextView) findViewById(R.id.idHistory);
+//        setContentView(R.layout.calculator);
+        int Orientation = getResources().getConfiguration().orientation;
 
-        num0 = (Button) findViewById(R.id.btn_0);
-        num1 = (Button) findViewById(R.id.btn_1);
-        num2 = (Button) findViewById(R.id.btn_2);
-        num3 = (Button) findViewById(R.id.btn_3);
-        num4 = (Button) findViewById(R.id.btn_4);
-        num5 = (Button) findViewById(R.id.btn_5);
-        num6 = (Button) findViewById(R.id.btn_6);
-        num7 = (Button) findViewById(R.id.btn_7);
-        num8 = (Button) findViewById(R.id.btn_8);
-        num9 = (Button) findViewById(R.id.btn_9);
+        switch(Orientation){
+            case  Configuration.ORIENTATION_LANDSCAPE:
+                Log.d(TAG,"Orientation is LANDSCAPE" );
+                setContentView(R.layout.calculator);
+                idHistory = (TextView) findViewById(R.id.idHistory);
 
-        ANS = (Button) findViewById(R.id.btn_ans);
-        DEL = (Button) findViewById(R.id.btn_DEL);
-        CE = (Button) findViewById(R.id.btn_CE);
-        equals = (Button) findViewById(R.id.btn_equals);
+                num0 = (Button) findViewById(R.id.btn_0);
+                num1 = (Button) findViewById(R.id.btn_1);
+                num2 = (Button) findViewById(R.id.btn_2);
+                num3 = (Button) findViewById(R.id.btn_3);
+                num4 = (Button) findViewById(R.id.btn_4);
+                num5 = (Button) findViewById(R.id.btn_5);
+                num6 = (Button) findViewById(R.id.btn_6);
+                num7 = (Button) findViewById(R.id.btn_7);
+                num8 = (Button) findViewById(R.id.btn_8);
+                num9 = (Button) findViewById(R.id.btn_9);
 
-        multiply = (Button) findViewById(R.id.btn_multiply);
-        division = (Button) findViewById(R.id.btn_division);
-        subtract = (Button) findViewById(R.id.btn_minus);
-        addition = (Button) findViewById(R.id.btn_plus);
+                ANS = (Button) findViewById(R.id.btn_ans);
+                DEL = (Button) findViewById(R.id.btn_DEL);
+                CE = (Button) findViewById(R.id.btn_CE);
+                equals = (Button) findViewById(R.id.btn_equals);
 
-        leftParenthesis = (Button) findViewById(R.id.btn_leftBracket);
-        rightParenthesis = (Button) findViewById(R.id.btn_rightBracket);
+                multiply = (Button) findViewById(R.id.btn_multiply);
+                division = (Button) findViewById(R.id.btn_division);
+                subtract = (Button) findViewById(R.id.btn_minus);
+                addition = (Button) findViewById(R.id.btn_plus);
 
-        dot = (Button) findViewById(R.id.btn_dot);
+                leftParenthesis = (Button) findViewById(R.id.btn_leftBracket);
+                rightParenthesis = (Button) findViewById(R.id.btn_rightBracket);
 
-        ButtonList = Arrays.asList(
-                num0,
-                num1,
-                num2,
-                num3,
-                num4,
-                num5,
-                num6,
-                num7,
-                num8,
-                num9,
+                dot = (Button) findViewById(R.id.btn_dot);
 
-                ANS,
-                DEL,
-                CE,
-                equals,
+                ButtonList = Arrays.asList(
+                        num0,
+                        num1,
+                        num2,
+                        num3,
+                        num4,
+                        num5,
+                        num6,
+                        num7,
+                        num8,
+                        num9,
 
-                multiply,
-                division,
-                subtract,
-                addition,
+                        ANS,
+                        DEL,
+                        CE,
+                        equals,
 
-                leftParenthesis,
-                rightParenthesis,
+                        multiply,
+                        division,
+                        subtract,
+                        addition,
 
-                dot
-        );
+                        leftParenthesis,
+                        rightParenthesis,
 
-        button_numList =  Arrays.asList(
-                num0,
-                num1,
-                num2,
-                num3,
-                num4,
-                num5,
-                num6,
-                num7,
-                num8,
-                num9 );
+                        dot
+                );
 
+                button_numList =  Arrays.asList(
+                        num0,
+                        num1,
+                        num2,
+                        num3,
+                        num4,
+                        num5,
+                        num6,
+                        num7,
+                        num8,
+                        num9 );
+
+                break;
+            case Configuration.ORIENTATION_PORTRAIT:
+                Log.d(TAG, "Orientation is Portrait");
+                setContentView(R.layout.calculator);
+                MainActivity.LaunchVerticalKeypad(this);
+                break;
+            default:
+                Log.d(TAG, "Orientation skipped to default");
+                finish();
+                break;
+        }
     }
 
         @Override

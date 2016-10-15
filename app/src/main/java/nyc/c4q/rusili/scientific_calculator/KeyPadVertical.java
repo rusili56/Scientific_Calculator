@@ -1,5 +1,6 @@
 package nyc.c4q.rusili.scientific_calculator;
 
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -14,7 +15,7 @@ import android.widget.TextView;
  */
 
 public class KeyPadVertical extends AppCompatActivity {
-
+    private static final String TAG = "MainActivity";
     private boolean lastequals = false;
     private String op = "";
     private String sNumber1, sNumber2, sAnswer;
@@ -26,11 +27,30 @@ public class KeyPadVertical extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.calculator);
+        int Orientation = getResources().getConfiguration().orientation;
 
-        scroll = (HorizontalScrollView) findViewById(R.id.headerscroll);
-        tvHistory = (TextView) findViewById(R.id.headerdisplay);
-        tvMain = (TextView) findViewById(R.id.displaynumbers);
+        switch(Orientation){
+            case  Configuration.ORIENTATION_LANDSCAPE:
+                Log.d(TAG,"Orientation is LANDSCAPE" );
+                setContentView(R.layout.calculator);
+                MainActivity.LaunchHorizontalKeypad(this);
+                break;
+            case Configuration.ORIENTATION_PORTRAIT:
+                Log.d(TAG, "Orientation is Portrait");
+                setContentView(R.layout.calculator);
+                setContentView(R.layout.calculator);
+
+                scroll = (HorizontalScrollView) findViewById(R.id.headerscroll);
+                tvHistory = (TextView) findViewById(R.id.headerdisplay);
+                tvMain = (TextView) findViewById(R.id.displaynumbers);
+                break;
+            default:
+                Log.d(TAG, "Orientation skipped to default");
+                finish();
+                break;
+         
+        }
+
     }
 
     public void ce() {
